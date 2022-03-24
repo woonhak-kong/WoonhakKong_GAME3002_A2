@@ -15,10 +15,19 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Flipper",
+                    "name": "LeftFlipper",
                     "type": "Value",
                     "id": "91231e30-5440-4455-be96-cb65d45068df",
-                    "expectedControlType": "Axis",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "RightFlipper",
+                    "type": "Value",
+                    "id": "a2216161-88e7-4f4e-96ff-729c43da3d83",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -37,37 +46,26 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "1D Axis",
-                    "id": "d3a94908-0a02-4383-9ad3-b289263180a3",
-                    "path": "1DAxis",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Flipper",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "negative",
-                    "id": "2bf04a73-90aa-4190-824c-be1a20c15cc5",
+                    "name": "",
+                    "id": "e79e39c3-0f36-4861-a8db-bc9e1f2483a1",
                     "path": "<Keyboard>/leftArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Flipper",
+                    "action": "LeftFlipper",
                     "isComposite": false,
-                    "isPartOfComposite": true
+                    "isPartOfComposite": false
                 },
                 {
-                    "name": "positive",
-                    "id": "bbf9f423-fc1c-425d-850b-d39867947850",
+                    "name": "",
+                    "id": "021fa38c-a41d-4069-ba51-94fa04b9695e",
                     "path": "<Keyboard>/rightArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Flipper",
+                    "action": "RightFlipper",
                     "isComposite": false,
-                    "isPartOfComposite": true
+                    "isPartOfComposite": false
                 }
             ]
         }

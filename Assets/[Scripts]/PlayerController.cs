@@ -6,10 +6,14 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     public GameObject Plunger;
+    public GameObject LeftFlipper;
+    public GameObject RightFlipper;
     public Transform PlungerStartPoint;
 
 
-    private float _pulling = 0.0f;
+    private bool _isPulling = false;
+    private bool _isClickLeftFlipper = false;
+    private bool _isClickRightFlipper = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,15 +28,15 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (_pulling == 0)
-        {
-            Plunger.GetComponent<Rigidbody>().isKinematic = false;
-        }
-        else
+        if (_isPulling)
         {
             Plunger.transform.position = Vector3.Lerp(Plunger.transform.position, PlungerStartPoint.position, Time.fixedDeltaTime * 5);
             Plunger.GetComponent<Rigidbody>().isKinematic = true;
-
+            
+        }
+        else
+        {
+            Plunger.GetComponent<Rigidbody>().isKinematic = false;
         }
     }
 
@@ -40,14 +44,30 @@ public class PlayerController : MonoBehaviour
     {
         Debug.Log("Fire!");
         Debug.Log(value.Get<float>());
-        _pulling = value.Get<float>();
+        _isPulling = value.Get<float>() == 1.0f;
     }
 
-    void OnFlipper(InputValue value)
+    void OnLeftFlipper(InputValue value)
     {
-        print("Flipper!");
-        float tmp = value.Get<float>();
-        print(tmp);
+        if (value.Get<float>() == 1)
+        {
+            LeftFlipper.GetComponent<HingeJoint>().useMotor = true;
+        }
+        else
+        {
+            LeftFlipper.GetComponent<HingeJoint>().useMotor = false;
+        }
+    }
+    void OnRightFlipper(InputValue value)
+    {
+        if (value.Get<float>() == 1)
+        {
+            RightFlipper.GetComponent<HingeJoint>().useMotor = true;
+        }
+        else
+        {
+            RightFlipper.GetComponent<HingeJoint>().useMotor = false;
+        }
     }
 
     private void OnDrawGizmos()
