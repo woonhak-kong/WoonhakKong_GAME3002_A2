@@ -12,8 +12,6 @@ public class PlayerController : MonoBehaviour
 
 
     private bool _isPulling = false;
-    private bool _isClickLeftFlipper = false;
-    private bool _isClickRightFlipper = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -42,8 +40,6 @@ public class PlayerController : MonoBehaviour
 
     void OnFire(InputValue value)
     {
-        Debug.Log("Fire!");
-        Debug.Log(value.Get<float>());
         _isPulling = value.Get<float>() == 1.0f;
     }
 
