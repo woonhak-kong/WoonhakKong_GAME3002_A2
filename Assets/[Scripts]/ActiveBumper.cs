@@ -18,16 +18,17 @@ public class ActiveBumper : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        // get normal between objects
         Vector3 normal = (collision.transform.position - transform.position).normalized;
 
-        //float magnitudeOfCurrentVelocity = collision.gameObject.GetComponent<Rigidbody>().velocity.magnitude;
-
+        // reset velocity
         collision.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
 
+        // calculating position after collision
         Vector3 posAfterReflect = Vector3.Reflect(collision.transform.position, normal);
-        //collision.transform.position = posAfterReflect;
+
+        // getting direction for addForce
         Vector3 direction = (posAfterReflect - transform.position).normalized;
-        //collision.gameObject.GetComponent<Rigidbody>().velocity = direction.normalized * magnitudeOfCurrentVelocity * 5.0f;
         collision.gameObject.GetComponent<Rigidbody>().AddForce(direction * 8.0f, ForceMode.Impulse);
 
     }

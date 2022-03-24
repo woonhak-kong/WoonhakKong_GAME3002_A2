@@ -18,16 +18,13 @@ public class FlatBumper : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        // same with Bumper;
         Vector3 normal = transform.up;
 
-        //float magnitudeOfCurrentVelocity = collision.gameObject.GetComponent<Rigidbody>().velocity.magnitude;
 
         collision.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
-
         Vector3 posAfterReflect = Vector3.Reflect(collision.transform.position, normal);
-        //collision.transform.position = posAfterReflect;
         Vector3 direction = (posAfterReflect - transform.position).normalized;
-        //collision.gameObject.GetComponent<Rigidbody>().velocity = direction.normalized * magnitudeOfCurrentVelocity * 5.0f;
         collision.gameObject.GetComponent<Rigidbody>().AddForce(direction * 8.0f, ForceMode.Impulse);
 
     }
