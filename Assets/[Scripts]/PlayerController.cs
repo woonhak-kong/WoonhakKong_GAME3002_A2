@@ -49,4 +49,11 @@ public class PlayerController : MonoBehaviour
         float tmp = value.Get<float>();
         print(tmp);
     }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(Plunger.transform.position,
+            Plunger.GetComponent<SpringJoint>().connectedBody.transform.position);
+    }
 }
