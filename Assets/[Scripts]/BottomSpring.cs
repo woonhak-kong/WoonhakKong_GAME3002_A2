@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BottomSpring : MonoBehaviour
 {
+    private Color _color;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,5 +21,16 @@ public class BottomSpring : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         collision.gameObject.GetComponent<Rigidbody>().AddForce(Vector3.up * 10.0f, ForceMode.Impulse);
+        ScoreManager.AddScore(30);
+
+        _color = GetComponent<MeshRenderer>().material.color;
+        GetComponent<MeshRenderer>().material.color = Color.magenta;
+
+        SoundManager.Instance.PlaySound(Sounds.BottomSpring);
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        GetComponent<MeshRenderer>().material.color = _color;
     }
 }

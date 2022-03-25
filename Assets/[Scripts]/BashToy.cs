@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FlatBumper : MonoBehaviour
+public class BashToy : MonoBehaviour
 {
     private Color _color;
 
@@ -20,25 +20,30 @@ public class FlatBumper : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        // same with Bumper;
-        Vector3 normal = transform.up;
+        // get normal between objects
+        Vector3 normal = (collision.transform.position - transform.position).normalized;
 
-
+        // reset velocity
         collision.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+
+        // calculating position after collision
         Vector3 posAfterReflect = Vector3.Reflect(collision.transform.position, normal);
+
+        // getting direction for addForce
         Vector3 direction = (posAfterReflect - transform.position).normalized;
         collision.gameObject.GetComponent<Rigidbody>().AddForce(direction * 8.0f, ForceMode.Impulse);
 
-        ScoreManager.AddScore(50);
+        ScoreManager.AddScore(100);
 
         _color = GetComponent<MeshRenderer>().material.color;
         GetComponent<MeshRenderer>().material.color = Color.magenta;
 
-        SoundManager.Instance.PlaySound(Sounds.Bumper);
+        SoundManager.Instance.PlaySound(Sounds.Toy);
     }
 
     private void OnCollisionExit(Collision collision)
     {
         GetComponent<MeshRenderer>().material.color = _color;
     }
+
 }
