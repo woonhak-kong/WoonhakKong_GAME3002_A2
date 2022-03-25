@@ -23,7 +23,8 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        ScoreManager.ResetScore();
+        //ScoreManager.ResetScore();
         Pinball.transform.position = PinballStartPoint.position;
+        FindObjectOfType<PlaySceneUIManager>().SetGameOverUI();
     }
 }

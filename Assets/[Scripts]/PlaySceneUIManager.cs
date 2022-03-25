@@ -23,10 +23,12 @@ public class PlaySceneUIManager : MonoBehaviour
     {
         GameOverUIBox.SetActive(false);
         ScoreManager.ResetScore();
+        Time.timeScale = 1.0f;
     }
 
     public void SetGameOverUI()
     {
         GameOverUIBox.SetActive(true);
+        Time.timeScale = 0.0f;
     }
 }

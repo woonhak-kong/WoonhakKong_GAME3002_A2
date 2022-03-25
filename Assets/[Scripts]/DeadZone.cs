@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class DeadZone : MonoBehaviour
 {
-    
-    private void OnCollisionExit(Collision collision)
+   
+
+    private void OnTriggerExit(Collider other)
     {
-        
+        print("dead!");
+        FindObjectOfType<GameManager>().GameOver();
     }
+   
 }
