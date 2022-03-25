@@ -18,6 +18,7 @@ public class Door : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        GetComponent<BoxCollider>().isTrigger = false;
+        if(other.transform.position.x < transform.position.x) 
+            GetComponent<BoxCollider>().isTrigger = false;
     }
 }
