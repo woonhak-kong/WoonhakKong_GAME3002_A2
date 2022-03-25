@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 
     public Transform PinballStartPoint;
     public GameObject Pinball;
+    public GameObject Door;
 
 
     // Start is called before the first frame update
@@ -26,5 +27,10 @@ public class GameManager : MonoBehaviour
         //ScoreManager.ResetScore();
         Pinball.transform.position = PinballStartPoint.position;
         FindObjectOfType<PlaySceneUIManager>().SetGameOverUI();
+    }
+
+    public void Restart()
+    {
+        Door.GetComponent<BoxCollider>().isTrigger = true;
     }
 }

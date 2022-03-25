@@ -24,6 +24,7 @@ public class PlaySceneUIManager : MonoBehaviour
         GameOverUIBox.SetActive(false);
         ScoreManager.ResetScore();
         Time.timeScale = 1.0f;
+        FindObjectOfType<GameManager>().Restart();
     }
 
     public void SetGameOverUI()
